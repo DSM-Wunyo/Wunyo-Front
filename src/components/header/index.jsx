@@ -38,6 +38,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 const Logo = styled.img`
+  margin-top: 30px;
   width: 200px;
 `;
 const Info = styled.div`
