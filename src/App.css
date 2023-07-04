@@ -1,0 +1,13 @@
+.Header {
+  position: fixed;
+  top: 0;
+}
+
+@import url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "BMJUA";
+}

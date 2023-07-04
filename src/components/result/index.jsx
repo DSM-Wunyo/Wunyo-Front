@@ -24,6 +24,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  font-family: "BMJUA";
 `;
 const Title = styled.p`
   font-size: 40px;

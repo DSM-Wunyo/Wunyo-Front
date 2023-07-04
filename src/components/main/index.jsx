@@ -1,10 +1,8 @@
 import { styled } from "styled-components";
-import Header from "../header";
 
 export default function Main() {
   return (
     <Container>
-      <Header />
       <Bubble>
         <BubbleImg src="/main/bubble.png"></BubbleImg>
         <BubbleFrame>
@@ -80,9 +78,9 @@ const Human = styled.img`
 
 const Container = styled.div`
   background-color: #ff9128;
+  height: 730px;
   width: 100%;
-  height: 690px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 `;
