@@ -1,5 +1,6 @@
 import React from "react";
 import { styled } from "styled-components";
+import { Link } from "react-router-dom";
 
 const Result = () => {
   return (
@@ -11,10 +12,12 @@ const Result = () => {
         <br />
         기능이 간단한 앱을 좋아해요.
       </Content>
-      <div>
-        <RankButton>순위</RankButton>
+      <ButtonContainer>
+        <Link to="/rank">
+          <RankButton>순위</RankButton>
+        </Link>
         <HobbyButton>취미 알아보기</HobbyButton>
-      </div>
+      </ButtonContainer>
     </Container>
   );
 };
@@ -40,6 +43,9 @@ const Content = styled.p`
   text-align: center;
   margin-top: 40px;
   color: #ff8d20;
+`;
+const ButtonContainer = styled.div`
+  margin-top: 30px;
 `;
 const RankButton = styled.button`
   width: 170px;
