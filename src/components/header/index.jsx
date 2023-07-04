@@ -5,10 +5,16 @@ export default function Header() {
   return (
     <Container>
       <Wrapper>
-        <Logo src="/imgs/Logo.png"></Logo>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <Logo src="/imgs/Logo.png"></Logo>
+        </Link>
         <Info>
-          <GoTest>테스트하기</GoTest>
-          <GoResult>결과보기</GoResult>
+          <Link to="/choose" style={{ textDecoration: "none" }}>
+            <GoTest>테스트하기</GoTest>
+          </Link>
+          <Link to="/result" style={{ textDecoration: "none" }}>
+            <GoResult>결과보기</GoResult>
+          </Link>
         </Info>
       </Wrapper>
     </Container>
