@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { Link } from "react-router-dom";
 
 export default function Main() {
   return (
@@ -10,7 +11,9 @@ export default function Main() {
             <BubbleTitle>나의 심리 상태는?</BubbleTitle>
             <BubbleDetail>심리테스트</BubbleDetail>
           </BubbleText>
-          <BubbleStart>시작하기</BubbleStart>
+          <Link to="/information" style={{ textDecoration: "none" }}>
+            <BubbleStart>시작하기</BubbleStart>
+          </Link>
         </BubbleFrame>
       </Bubble>
       <Human src="/main/human.png"></Human>
