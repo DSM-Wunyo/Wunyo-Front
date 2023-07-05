@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 export default function Header() {
+  const [isClick, setIsClick] = useState(true);
+
   return (
     <Container>
       <Wrapper>
@@ -9,11 +12,25 @@ export default function Header() {
           <Logo src="/imgs/Logo.png"></Logo>
         </Link>
         <Info>
-          <Link to="/choose" style={{ textDecoration: "none" }}>
-            <GoTest>테스트하기</GoTest>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <GoTest
+              style={{ color: !isClick ? "black" : "#ff9128" }}
+              onClick={() => {
+                setIsClick(true);
+              }}
+            >
+              테스트하기
+            </GoTest>
           </Link>
-          <Link to="/result" style={{ textDecoration: "none" }}>
-            <GoResult>결과보기</GoResult>
+          <Link to="/myPage" style={{ textDecoration: "none" }}>
+            <GoResult
+              style={{ color: isClick ? "black" : "#ff9128" }}
+              onClick={() => {
+                setIsClick(false);
+              }}
+            >
+              결과보기
+            </GoResult>
           </Link>
         </Info>
       </Wrapper>
@@ -38,6 +55,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 const Logo = styled.img`
+  margin-top: 30px;
   width: 200px;
 `;
 const Info = styled.div`

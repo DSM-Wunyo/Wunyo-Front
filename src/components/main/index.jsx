@@ -21,17 +21,17 @@ export default function Main() {
   );
 }
 const BubbleTitle = styled.p`
-  font-size: 50px;
+  font-size: 70px;
   margin: 0px;
 `;
 
 const BubbleDetail = styled.p`
-  font-size: 25px;
+  font-size: 45px;
   margin: 0px;
 `;
 
 const BubbleStart = styled.p`
-  font-size: 30px;
+  font-size: 35px;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -81,7 +81,7 @@ const Human = styled.img`
 
 const Container = styled.div`
   background-color: #ff9128;
-  height: 730px;
+  height: 740px;
   width: 100%;
   display: flex;
   justify-content: center;
