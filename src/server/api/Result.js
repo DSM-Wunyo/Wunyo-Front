@@ -22,16 +22,6 @@ export const fetchResultDetail = async ({ resultId }) => {
   }
 };
 
-export const fetchHobbyRank = async () => {
-  try {
-    const request = getRequest();
-    const response = await request.get("/result/ranking");
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const saveResult = async ({
   name,
   sex,
