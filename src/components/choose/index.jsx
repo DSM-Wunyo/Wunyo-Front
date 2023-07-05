@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import Question from "./question";
+import React, { useState } from "react";
 
 const Choose = () => {
   const question = [
@@ -7,52 +8,62 @@ const Choose = () => {
       number: 1,
       title: "당신은 사교적인 성격이라고 생각하시나요?",
       type: "active",
-      score: 0,
     },
     {
       number: 2,
       title: "당신은 사교적인 성격이라고 생각하시나요?",
       type: "active",
-      score: 0,
     },
     {
       number: 3,
       title: "당신은 사교적인 성격이라고 생각하시나요?",
       type: "active",
-      score: 0,
     },
     {
       number: 4,
       title: "당신은 사교적인 성격이라고 생각하시나요?",
       type: "active",
-      score: 0,
     },
     {
       number: 5,
       title: "당신은 사교적인 성격이라고 생각하시나요?",
       type: "active",
-      score: 0,
     },
   ];
+
+  const [activeScore, setActiveScore] = useState(0);
+  const [soloScore, setSoloScore] = useState(0);
 
   return (
     <Container>
       <Questions>
         {question.map((arr, i) => (
-          <Question key={i} arr={arr}></Question>
+          <Question
+            key={i}
+            arr={arr}
+            activeScore={activeScore}
+            setActiveScore={setActiveScore}
+            soloScore={soloScore}
+            setSoloScore={setSoloScore}
+          />
         ))}
       </Questions>
+      <Button>
+        <Before>&lt;-이전</Before>
+        <After>다음-&gt;</After>
+      </Button>
     </Container>
   );
 };
 
 const Container = styled.div`
   width: 100%;
-  height: 2500px;
+  height: 2700px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 100px;
 `;
 const Questions = styled.div`
   width: 60%;
@@ -61,6 +72,22 @@ const Questions = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+`;
+const Button = styled.div`
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+const Before = styled.p`
+  color: #ff9128;
+  font-family: "BMJUA";
+  font-size: 50px;
+`;
+const After = styled.p`
+  color: #ff9128;
+  font-family: "BMJUA";
+  font-size: 50px;
 `;
 
 export default Choose;

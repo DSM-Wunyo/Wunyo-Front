@@ -1,53 +1,72 @@
 import { styled } from "styled-components";
 import { useState } from "react";
 
-const Question = ({ arr }) => {
+const Question = ([
+  { arr },
+  activeScore,
+  setActiveScore,
+  soloScore,
+  setSoloScore,
+]) => {
   const [textColor, setTextColor] = useState(0);
+  const circleOnclick = (num) => {
+    setTextColor(num);
+    if (arr.type === "active") {
+      const number = activeScore + num;
+      setActiveScore(number);
+    } else if (arr.type === "solo") {
+      const number = soloScore + num;
+      setSoloScore(number);
+    }
+  };
+
   return (
     <Container>
-      <Title>{`${arr.number}. ${arr.title}`}</Title>
+      <Title>
+        {arr.number}. {arr.title}
+      </Title>
       <Circles>
         <XXLCircle
           style={{
             backgroundColor: textColor === 1 ? "#ff9128" : "white",
           }}
-          onClick={() => setTextColor(1)}
+          onClick={() => circleOnclick(1)}
         ></XXLCircle>
         <XLCircle
           style={{
             backgroundColor: textColor === 2 ? "#ff9128" : "white",
           }}
-          onClick={() => setTextColor(2)}
+          onClick={() => circleOnclick(2)}
         ></XLCircle>
         <LCircle
           style={{
             backgroundColor: textColor === 3 ? "#ff9128" : "white",
           }}
-          onClick={() => setTextColor(3)}
+          onClick={() => circleOnclick(3)}
         ></LCircle>
         <SCircle
           style={{
             backgroundColor: textColor === 4 ? "#ff9128" : "white",
           }}
-          onClick={() => setTextColor(4)}
+          onClick={() => circleOnclick(4)}
         ></SCircle>
         <LCircle
           style={{
             backgroundColor: textColor === 5 ? "#ff9128" : "white",
           }}
-          onClick={() => setTextColor(5)}
+          onClick={() => circleOnclick(5)}
         ></LCircle>
         <XLCircle
           style={{
             backgroundColor: textColor === 6 ? "#ff9128" : "white",
           }}
-          onClick={() => setTextColor(6)}
+          onClick={() => circleOnclick(6)}
         ></XLCircle>
         <XXLCircle
           style={{
             backgroundColor: textColor === 7 ? "#ff9128" : "white",
           }}
-          onClick={() => setTextColor(7)}
+          onClick={() => circleOnclick(7)}
         ></XXLCircle>
       </Circles>
     </Container>
