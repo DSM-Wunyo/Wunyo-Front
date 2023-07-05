@@ -1,7 +1,8 @@
 import { styled } from "styled-components";
 import Question from "./question";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { saveResult } from "../../server/api/result";
 
 const Choose = () => {
   const question = [
@@ -139,8 +140,24 @@ const Choose = () => {
     },
   ];
 
+  const location = useLocation();
+  const userInfo = { ...location.state };
   const [activeScore, setActiveScore] = useState(0);
   const [soloScore, setSoloScore] = useState(0);
+  const navigate = useNavigate();
+
+  const saveResultFunction = () => {
+    saveResult({
+      name: userInfo.name,
+      sex: userInfo.sex,
+      birthday: userInfo.birthday,
+      active_score: activeScore,
+      solo_score: soloScore,
+    }).then((res) => {
+      localStorage.setItem("result_id", res.data.result_id);
+      navigate("/result");
+    });
+  };
 
   return (
     <Container>
@@ -157,9 +174,7 @@ const Choose = () => {
         ))}
       </Questions>
       <Button>
-        <Link to="/result" style={{ textDecoration: "none" }}>
-          <After>결과보러가기</After>
-        </Link>
+        <After onClick={saveResultFunction}>결과보러가기</After>
       </Button>
     </Container>
   );
@@ -188,10 +203,11 @@ const Button = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const After = styled.p`
+const After = styled.button`
   width: 400px;
   height: 150px;
   border: 3px solid #ff9128;
+  background-color: white;
   border-radius: 110px;
   color: #ff9128;
   font-family: "BMJUA";
@@ -201,6 +217,7 @@ const After = styled.p`
   align-items: center;
   text-align: center;
   margin-top: 50px;
+  cursor: pointer;
 `;
 
 export default Choose;

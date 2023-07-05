@@ -1,24 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
-const BeforeResultCard = ({
-  hobby_id,
-  hobby,
-  result_date,
-  result_id,
-}: props) => {
-  const navigate = useNavigate();
+const BeforeResultCard = ({ id, hobby, date }) => {
   return (
-    <Container
-      onClick={() => {
-        localStorage.setItem("result_id", result_id);
-        navigate("/result");
-      }}
-    >
-      <Image src={getImage(hobby_id)} />
+    <Container>
+      <Image src={getImage(id)} />
       <Text>{`취미 : ${hobby}`}</Text>
-      <Text>{`검사날짜 : ${result_date.slice(0, 10)}`}</Text>
+      <Text>{`검사날짜 : ${date.slice(0, 10)}`}</Text>
     </Container>
   );
 };
