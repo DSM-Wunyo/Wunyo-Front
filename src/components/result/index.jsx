@@ -1,17 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 
 const Result = () => {
+  const [result, setResult] = useState({
+    resultID: 0,
+    hobby: "",
+    content: "",
+    img: "",
+  });
+  useEffect(() => {
+    let obj = result;
+    switch (result.resultID) {
+      case 0:
+        obj.img = "/imgs/art.jpeg";
+        setResult(obj);
+        break;
+      case 1:
+        obj.img = "/imgs/swim.png";
+        setResult(obj);
+        break;
+      case 2:
+        obj.img = "/imgs/skateBoard.jpg";
+        setResult(obj);
+        break;
+      case 3:
+        obj.img = "/imgs/bike.png";
+        setResult(obj);
+        break;
+    }
+  }, [result]);
+
   return (
     <Container>
-      <Title>{`추천 취미 : 미술`}</Title>
-      <Image src="./imgs/art.jpeg" />
-      <Content>
-        해석 : 화려하고 모두에게 인기가 많으며
-        <br />
-        기능이 간단한 앱을 좋아해요.
-      </Content>
+      <Title>{`추천 취미 : ${result.hobby}`}</Title>
+      <Image src={result.img} />
+      <Content>{`해석 : ${result.content}`}</Content>
       <ButtonContainer>
         <Link to="/rank" style={{ textDecoration: "none" }}>
           <RankButton>순위</RankButton>

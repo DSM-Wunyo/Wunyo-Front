@@ -28,12 +28,15 @@ const Question = ({
         {arr.number}. {arr.title}
       </Title>
       <Circles>
-        <XXLCircle
-          style={{
-            backgroundColor: textColor === 1 ? "#ff9128" : "white",
-          }}
-          onClick={() => circleOnclick(1)}
-        ></XXLCircle>
+        <Info>
+          <XXLCircle
+            style={{
+              backgroundColor: textColor === 1 ? "#ff9128" : "white",
+            }}
+            onClick={() => circleOnclick(1)}
+          ></XXLCircle>
+          <InfoText>매우 아니다</InfoText>
+        </Info>
         <XLCircle
           style={{
             backgroundColor: textColor === 2 ? "#ff9128" : "white",
@@ -64,12 +67,15 @@ const Question = ({
           }}
           onClick={() => circleOnclick(6)}
         ></XLCircle>
-        <XXLCircle
-          style={{
-            backgroundColor: textColor === 7 ? "#ff9128" : "white",
-          }}
-          onClick={() => circleOnclick(7)}
-        ></XXLCircle>
+        <Info>
+          <XXLCircle
+            style={{
+              backgroundColor: textColor === 7 ? "#ff9128" : "white",
+            }}
+            onClick={() => circleOnclick(7)}
+          ></XXLCircle>
+          <InfoText>매우 그렇다</InfoText>
+        </Info>
       </Circles>
     </Container>
   );
@@ -77,7 +83,7 @@ const Question = ({
 
 const Container = styled.div`
   width: 100%;
-  height: 300px;
+  height: 250px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -85,7 +91,7 @@ const Container = styled.div`
 `;
 const Title = styled.p`
   font-family: "BMJUA";
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
 `;
 const Circles = styled.div`
@@ -94,6 +100,16 @@ const Circles = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+const Info = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+const InfoText = styled.p`
+  font-size: 20px;
+  text-align: center;
 `;
 const XXLCircle = styled.div`
   width: 120px;
