@@ -1,34 +1,32 @@
 import { styled } from "styled-components";
+import { fetchHobbyRank } from "../../server/api/hobby";
+import { useEffect, useState } from "react";
 
 export default function Rank() {
+  const [rankList, setRankList] = useState([]);
+
+  useEffect(() => {
+    fetchHobbyRank().then((response) => {
+      setRankList(response?.data ?? []);
+    });
+  }, []);
+
   return (
     <Container>
-      <Box>
-        <Box1>
-          <Number>1.</Number>
-          <RankImg src="/main/music.png"></RankImg>
-          <Wrapper>
-            <Hobby>취미 : 음악 감상</Hobby>
-            <Percent>전체 비율 : 21.0%</Percent>
-          </Wrapper>
-        </Box1>
-        <Box2>
-          <Number>2.</Number>
-          <RankImg src="/main/music.png"></RankImg>
-          <Wrapper>
-            <Hobby>취미 : 음악 감상</Hobby>
-            <Percent>전체 비율 : 21.0%</Percent>
-          </Wrapper>
-        </Box2>
-        <Box3>
-          <Number>3.</Number>
-          <RankImg src="/main/music.png"></RankImg>
-          <Wrapper>
-            <Hobby>취미 : 음악 감상</Hobby>
-            <Percent>전체 비율 : 21.0%</Percent>
-          </Wrapper>
-        </Box3>
-      </Box>
+      <RankListContainer>
+        {rankList.map((res, index) => {
+          return (
+            <RankContainer>
+              <Number>{`${index}.`}</Number>
+              <RankImg src="/main/music.png" />
+              <Wrapper>
+                <Hobby>{res.hobby}</Hobby>
+                <Percent>{`${res.ratio}%`}</Percent>
+              </Wrapper>
+            </RankContainer>
+          );
+        })}
+      </RankListContainer>
     </Container>
   );
 }
@@ -62,7 +60,7 @@ const Number = styled.p`
   margin-left: 10px;
 `;
 
-const Box3 = styled.div`
+const RankContainer = styled.div`
   width: 1400px;
   height: 150px;
   background-color: white;
@@ -72,27 +70,7 @@ const Box3 = styled.div`
   align-items: center;
 `;
 
-const Box2 = styled.div`
-  width: 1400px;
-  height: 150px;
-  background-color: white;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const Box1 = styled.div`
-  width: 1400px;
-  height: 150px;
-  background-color: white;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const Box = styled.div`
+const RankListContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,7 +81,7 @@ const Box = styled.div`
 const Container = styled.div`
   background-color: #ff9128;
   width: 100%;
-  height: 690px;
+  height: 780px;
   margin: 0 auto;
   display: flex;
   align-items: center;
