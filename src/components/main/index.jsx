@@ -1,10 +1,9 @@
 import { styled } from "styled-components";
-import Header from "../header";
+import { Link } from "react-router-dom";
 
 export default function Main() {
   return (
     <Container>
-      <Header />
       <Bubble>
         <BubbleImg src="/main/bubble.png"></BubbleImg>
         <BubbleFrame>
@@ -12,7 +11,9 @@ export default function Main() {
             <BubbleTitle>나의 심리 상태는?</BubbleTitle>
             <BubbleDetail>심리테스트</BubbleDetail>
           </BubbleText>
-          <BubbleStart>시작하기</BubbleStart>
+          <Link to="/information" style={{ textDecoration: "none" }}>
+            <BubbleStart>시작하기</BubbleStart>
+          </Link>
         </BubbleFrame>
       </Bubble>
       <Human src="/main/human.png"></Human>
@@ -20,17 +21,17 @@ export default function Main() {
   );
 }
 const BubbleTitle = styled.p`
-  font-size: 50px;
+  font-size: 70px;
   margin: 0px;
 `;
 
 const BubbleDetail = styled.p`
-  font-size: 25px;
+  font-size: 45px;
   margin: 0px;
 `;
 
 const BubbleStart = styled.p`
-  font-size: 30px;
+  font-size: 35px;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -80,9 +81,9 @@ const Human = styled.img`
 
 const Container = styled.div`
   background-color: #ff9128;
+  height: 740px;
   width: 100%;
-  height: 690px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 `;
