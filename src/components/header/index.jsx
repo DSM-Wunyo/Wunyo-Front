@@ -53,5 +53,5 @@ const GoTest = styled.p`
   color: black;
 `;
 const GoResult = styled.p`
-  color: #ff9128;
+  color: black;
 `;
