@@ -1,20 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import BeforeResultCard from "./card/BeforeResultCard";
+import { fetchResultList } from "../../server/api/result";
 
 const MyPage = () => {
+  const [resultList, setResultList] = useState([]);
+
+  useEffect(() => {
+    const name = localStorage.getItem("name") ?? "";
+    const sex = localStorage.getItem("sex") ?? "";
+    const birthday = localStorage.getItem("birthday") ?? "";
+    fetchResultList(name, sex, birthday).then((res) => {
+      setResultList(res.data.result_list);
+    });
+  }, []);
+
   return (
     <Container>
       <BeforeResultText>이전 결과</BeforeResultText>
       <CardContainer>
-        <BeforeResultCard />
-        <BeforeResultCard />
-        <BeforeResultCard />
-        <BeforeResultCard />
-        <BeforeResultCard />
-        <BeforeResultCard />
-        <BeforeResultCard />
-        <BeforeResultCard />
+        {resultList.map((result) => {
+          return (
+            <BeforeResultCard
+              hobby={result.hobby}
+              hobby_id={result.hobby_id}
+              result_date={result.result_date}
+              result_id={result.result_id}
+            />
+          );
+        })}
       </CardContainer>
     </Container>
   );

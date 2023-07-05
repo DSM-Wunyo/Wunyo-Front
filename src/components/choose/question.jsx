@@ -117,6 +117,7 @@ const XXLCircle = styled.div`
   background-color: white;
   border: 3px solid #ff9128;
   border-radius: 50%;
+  cursor: pointer;
 `;
 const XLCircle = styled.div`
   width: 90px;
@@ -124,6 +125,7 @@ const XLCircle = styled.div`
   background-color: white;
   border: 3px solid #ff9128;
   border-radius: 50%;
+  cursor: pointer;
 `;
 const LCircle = styled.div`
   width: 65px;
@@ -131,6 +133,7 @@ const LCircle = styled.div`
   background-color: white;
   border: 3px solid #ff9128;
   border-radius: 50%;
+  cursor: pointer;
 `;
 const SCircle = styled.div`
   width: 45px;
@@ -138,6 +141,7 @@ const SCircle = styled.div`
   background-color: white;
   border: 3px solid #ff9128;
   border-radius: 50%;
+  cursor: pointer;
 `;
 
 export default Question;

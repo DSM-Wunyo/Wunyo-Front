@@ -1,9 +1,8 @@
 import { styled } from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { WriteUserInformation } from "../../server/api/user";
+import { useNavigate } from "react-router-dom";
 
-export default function Information() {
+export default function RankInformation() {
   const [name, setName] = useState("");
   const [sex, setSex] = useState("");
   const [year, setYear] = useState("");
@@ -18,22 +17,10 @@ export default function Information() {
     );
   }, [name, sex, year, month, day]);
 
-  const writeInformation = async () => {
-    const isSuccess = await WriteUserInformation({
-      name,
-      sex,
-      birthday: `${year}-${month}-${day}`,
-    });
-
-    if (isSuccess) {
-      navigate("/choose", {
-        state: {
-          name: name,
-          sex: sex,
-          birthday: `${year}-${month}-${day}`,
-        },
-      });
-    }
+  const saveData = () => {
+    localStorage.setItem("name", name);
+    localStorage.setItem("sex", sex);
+    localStorage.setItem("birthday", `${year}-${month}-${day}`);
   };
 
   return (
@@ -86,14 +73,14 @@ export default function Information() {
             </Date>
           </Info>
         </Wrapper>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <Before>{"<- 이전"}</Before>
-        </Link>
         <Next
           style={{
             display: hidden ? "none" : "block",
           }}
-          onClick={writeInformation}
+          onClick={() => {
+            saveData();
+            navigate("/my-page");
+          }}
         >
           {"다음 ->"}
         </Next>

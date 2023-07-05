@@ -9,7 +9,12 @@ export default function Header() {
     <Container>
       <Wrapper>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <Logo src="/imgs/Logo.png"></Logo>
+          <Logo
+            onClick={() => {
+              setIsClick(true);
+            }}
+            src="/imgs/Logo.png"
+          ></Logo>
         </Link>
         <Info>
           <Link to="/" style={{ textDecoration: "none" }}>
@@ -22,7 +27,7 @@ export default function Header() {
               테스트하기
             </GoTest>
           </Link>
-          <Link to="/myPage" style={{ textDecoration: "none" }}>
+          <Link to="/rank-information" style={{ textDecoration: "none" }}>
             <GoResult
               style={{ color: isClick ? "black" : "#ff9128" }}
               onClick={() => {
