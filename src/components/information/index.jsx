@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { WriteUserInformation } from "../../server/api/user";
 
 export default function Information() {
   const [name, setName] = useState("");
@@ -9,13 +10,24 @@ export default function Information() {
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
   const [hidden, setHidden] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(name.length);
     setHidden(
       name === "" || sex === "" || year === "" || month === "" || day === ""
     );
   }, [name, sex, year, month, day]);
+
+  const writeInformation = async () => {
+    const isSuccess = await WriteUserInformation({
+      name,
+      sex,
+      birthday: `${year}-${month}-${day}`,
+    });
+    if (isSuccess) {
+      navigate("/choose");
+    }
+  };
 
   return (
     <Container>
@@ -70,15 +82,14 @@ export default function Information() {
         <Link to="/" style={{ textDecoration: "none" }}>
           <Before>{"<- 이전"}</Before>
         </Link>
-        <Link
-          to="/choose"
+        <Next
           style={{
-            textDecoration: "none",
             display: hidden ? "none" : "block",
           }}
+          onClick={writeInformation}
         >
-          <Next>{"다음 ->"}</Next>
-        </Link>
+          {"다음 ->"}
+        </Next>
       </Frame>
     </Container>
   );
