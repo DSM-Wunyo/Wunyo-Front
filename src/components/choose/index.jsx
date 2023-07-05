@@ -55,7 +55,7 @@ const Container = styled.div`
   flex-direction: column;
 `;
 const Questions = styled.div`
-  width: 55%;
+  width: 60%;
   height: 2200px;
   display: flex;
   justify-content: space-between;
