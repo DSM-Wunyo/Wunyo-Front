@@ -39,7 +39,7 @@ const Choose = () => {
     <Container>
       <Questions>
         {question.map((arr, i) => (
-          <Question key={i} arr={arr}></Question>
+          <Question key={i} props={arr}></Question>
         ))}
       </Questions>
     </Container>
