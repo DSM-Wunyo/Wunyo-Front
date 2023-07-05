@@ -3,7 +3,10 @@
   top: 0;
 }
 
-@import url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff");
+@font-face {
+  font-family: "BMJUA";
+  src: url("./fonts/BMJUA_otf.otf");
+}
 
 * {
   padding: 0;
