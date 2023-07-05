@@ -31,11 +31,9 @@ const BeforeResultText = styled.p`
   font-size: 30px;
 `;
 const CardContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-top: 20px;
-  justify-content: space-between;
 `;
 
 export default MyPage;
