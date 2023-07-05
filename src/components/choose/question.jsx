@@ -1,24 +1,26 @@
 import { styled } from "styled-components";
 import { useState } from "react";
 
-const Question = ([
-  { arr },
+const Question = ({
+  arr,
   activeScore,
   setActiveScore,
   soloScore,
   setSoloScore,
-]) => {
+}) => {
   const [textColor, setTextColor] = useState(0);
   const circleOnclick = (num) => {
-    setTextColor(num);
     if (arr.type === "active") {
-      const number = activeScore + num;
+      const number = activeScore + num - textColor;
       setActiveScore(number);
     } else if (arr.type === "solo") {
-      const number = soloScore + num;
+      const number = soloScore + num - textColor;
       setSoloScore(number);
     }
+    setTextColor(num);
   };
+
+  console.log(activeScore, soloScore);
 
   return (
     <Container>

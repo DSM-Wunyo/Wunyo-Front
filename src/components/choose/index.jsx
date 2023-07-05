@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import Question from "./question";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Choose = () => {
   const question = [
@@ -17,7 +18,7 @@ const Choose = () => {
     {
       number: 3,
       title: "당신은 사교적인 성격이라고 생각하시나요?",
-      type: "active",
+      type: "solo",
     },
     {
       number: 4,
@@ -27,7 +28,7 @@ const Choose = () => {
     {
       number: 5,
       title: "당신은 사교적인 성격이라고 생각하시나요?",
-      type: "active",
+      type: "solo",
     },
   ];
 
@@ -50,7 +51,9 @@ const Choose = () => {
       </Questions>
       <Button>
         <Before>&lt;-이전</Before>
-        <After>다음-&gt;</After>
+        <Link to="/result" style={{ textDecoration: "none" }}>
+          <After>다음-&gt;</After>
+        </Link>
       </Button>
     </Container>
   );
