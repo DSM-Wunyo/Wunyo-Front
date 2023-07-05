@@ -19,7 +19,7 @@ export default function Information() {
             </Date>
           </Info>
         </Wrapper>
-        <Next>다음 -></Next>
+        <Next>{"다음 ->"}</Next>
       </Frame>
     </Container>
   );
