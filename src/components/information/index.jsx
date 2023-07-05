@@ -1,9 +1,21 @@
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Information() {
-  const [sex, setSex] = useState(null);
+  const [name, setName] = useState("");
+  const [sex, setSex] = useState("");
+  const [year, setYear] = useState("");
+  const [month, setMonth] = useState("");
+  const [day, setDay] = useState("");
+  const [hidden, setHidden] = useState(true);
+
+  useEffect(() => {
+    console.log(name.length);
+    setHidden(
+      name === "" || sex === "" || year === "" || month === "" || day === ""
+    );
+  }, [name, sex, year, month, day]);
 
   return (
     <Container>
@@ -11,7 +23,10 @@ export default function Information() {
         <Wrapper>
           <Text>신상 정보 입력</Text>
           <Info>
-            <Name placeholder="성명"></Name>
+            <Name
+              placeholder="성명"
+              onChange={(e) => setName(e.target.value)}
+            ></Name>
             <Sex>
               <Man
                 onClick={() => {
@@ -37,16 +52,31 @@ export default function Information() {
               </Woman>
             </Sex>
             <Date>
-              <Year placeholder="년"></Year>
-              <Month placeholder="월"></Month>
-              <Day placeholder="일"></Day>
+              <Year
+                placeholder="년"
+                onChange={(e) => setYear(e.target.value)}
+              ></Year>
+              <Month
+                placeholder="월"
+                onChange={(e) => setMonth(e.target.value)}
+              ></Month>
+              <Day
+                placeholder="일"
+                onChange={(e) => setDay(e.target.value)}
+              ></Day>
             </Date>
           </Info>
         </Wrapper>
         <Link to="/" style={{ textDecoration: "none" }}>
           <Before>{"<- 이전"}</Before>
         </Link>
-        <Link to="/choose" style={{ textDecoration: "none" }}>
+        <Link
+          to="/choose"
+          style={{
+            textDecoration: "none",
+            display: hidden ? "none" : "block",
+          }}
+        >
           <Next>{"다음 ->"}</Next>
         </Link>
       </Frame>
